@@ -1,13 +1,13 @@
 import random
-def load_dictionary(file_path):
+def idk(file_path):
   with open(file_path) as f:
     words = [line.strip() for line in f]
     return words
     
-def is_valid_guess(guess, guesses):
+def khôngbiếtđặttênlàj(guess, guesses):
   return len(guess) == 5 and guess in guesses 
 
-def evaluate_guess(guess, word):
+def kanyewest_trippin_frfr(guess, word):
   str = ""
 
   for i in range(5):
@@ -24,26 +24,28 @@ def evaluate_guess(guess, word):
   
 
 def wordle(guesses, answers):
-  print("Welcome to the game, my nibba. Ya got 6 chances to guess a 5-letter word. Good luck!")
-  secret_word = random.choice(answers)
-  attempts = 1
-  max_attempts = 6
-  while attempts <= max_attempts:
-    guess = input("Enter the guess #" + str(attempts) + ": ").lower()
-    if not is_valid_guess(guess, guesses):
-      print("Invalid guess. Pls enter an English word with 5 letters")
+  print("m có 6 cơ hội để đoán 1 từ tiếng anh gồm 5 chữ cái.")
+  đáp_án = random.choice(answers)
+  số_lượt = 1
+  sl_gioihan = 6
+  while số_lượt <= sl_gioihan:
+    guess = input("Lượt đoán #" + str(số_lượt) + ": ").lower()
+    if not khôngbiếtđặttênlàj(guess, guesses):
+      print("Không hợp lệ, try again nibba")
       continue
-    if guess == secret_word:
-      print("YOOO CONGRATS! You guessed the word: ", secret_word)
+    if guess == đáp_án:
+      print("VICTORY!!! UR TRULY THE STORM THAT IS APPROACHING !!! YOU GUESSED THE WORD: ", đáp_án)
       break
-    attempts += 1
-    feedback = evaluate_guess(guess, secret_word)
+    số_lượt += 1
+    feedback = kanyewest_trippin_frfr(guess, đáp_án)
     print(feedback)
-  if attempts > max_attempts:
-    print("GAME OVER! The word was: ", secret_word)
+  if số_lượt > sl_gioihan:
+    print("GAME OVER! (skill issue). Đáp án là: ", đáp_án)
     
     
 
-guesses = load_dictionary("guesses.txt")
-answers = load_dictionary("answers.txt")
+guesses = idk("guesses.txt")
+answers = idk("answers.txt")
 wordle(guesses, answers)
+input("\nNhấn Enter để thoát...")
+
